@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'di/app_di.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData(
         brightness: Brightness.light,
         colorSchemeSeed: Colors.teal,
@@ -16,11 +18,7 @@ class App extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: Center(
-          child: Text('Art Gallery'),
-        ),
-      ),
+      routerConfig: appRouter.config(),
     );
   }
 }

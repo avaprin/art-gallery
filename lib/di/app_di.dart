@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../src/data/repositories/art/art_repository.dart';
 import '../src/data/repositories/art/art_repository_impl.dart';
+import '../src/navigation/router.dart';
 
 final Dio _dio = Dio(
   BaseOptions(
@@ -13,3 +14,5 @@ final Dio _dio = Dio(
 final ArtRepository artRepository = ArtRepositoryImpl(
   _dio,
 );
+
+final AppRouter appRouter = AppRouter();
