@@ -36,10 +36,12 @@ final class SearchEmpty extends SearchState {
 final class SearchSuccess extends SearchState with EquatableMixin {
   final String query;
   final List<ArtPreview> artPreviews;
+  final SearchPaginationState paginationState;
 
   const SearchSuccess({
     required this.query,
     required this.artPreviews,
+    required this.paginationState,
     required super.suggestions,
   });
 
@@ -48,7 +50,22 @@ final class SearchSuccess extends SearchState with EquatableMixin {
     return <Object?>[
       query,
       artPreviews,
+      paginationState,
       suggestions,
     ];
+  }
+
+  SearchSuccess copyWith({
+    String? query,
+    List<ArtPreview>? artPreviews,
+    SearchPaginationState? paginationState,
+    Set<String>? suggestions,
+  }) {
+    return SearchSuccess(
+      query: query ?? this.query,
+      artPreviews: artPreviews ?? this.artPreviews,
+      paginationState: paginationState ?? this.paginationState,
+      suggestions: suggestions ?? this.suggestions,
+    );
   }
 }

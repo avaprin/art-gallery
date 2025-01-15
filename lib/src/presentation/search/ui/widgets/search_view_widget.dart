@@ -23,9 +23,11 @@ class SearchViewWidget extends StatelessWidget {
           SearchEmpty() => const SearchEmptyWidget(),
           SearchSuccess(
             :final List<ArtPreview> artPreviews,
+            :final SearchPaginationState paginationState,
           ) =>
             SearchSuccessWidget(
               artPreviews: artPreviews,
+              paginationState: paginationState,
             ),
         };
       },
