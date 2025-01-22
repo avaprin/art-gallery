@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../presentation/details/ui/details_screen.dart';
 import '../presentation/search/ui/search_screen.dart';
 
 part 'router.gr.dart';
@@ -13,6 +14,10 @@ class AppRouter extends RootStackRouter {
           initial: true,
           path: '/',
           page: SearchRoute.page,
+        ),
+        AdaptiveRoute<void>(
+          path: '/details/:id',
+          page: DetailsRoute.page,
         ),
       ];
 }
