@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../di/app_di.dart';
 import '../../../../core_ui/html_text.dart';
 import '../../../../data/models/details/art_details.dart';
+import '../../../../navigation/router.dart';
 
 class DetailsSuccessWidget extends StatefulWidget {
   final ArtDetails artDetails;
@@ -18,6 +20,12 @@ class DetailsSuccessWidget extends StatefulWidget {
 }
 
 class _DetailsSuccessWidgetState extends State<DetailsSuccessWidget> {
+  void _handleImageTap() {
+    appRouter.push(
+      ImageRoute(imageUrl: widget.artDetails.imageUrl),
+    );
+  }
+
   void _handleLinkTap(String url) {
     final Uri? uri = Uri.tryParse(url);
     if (uri == null) return;
@@ -32,17 +40,20 @@ class _DetailsSuccessWidgetState extends State<DetailsSuccessWidget> {
     return ListView(
       children: <Widget>[
         //
-        SizedBox(
-          height: 300,
-          child: CachedNetworkImage(
-            imageUrl: widget.artDetails.imageUrl,
-            fit: BoxFit.contain,
-            errorWidget: (_, __, ___) {
-              return const Icon(
-                Icons.image_not_supported_outlined,
-                size: 80,
-              );
-            },
+        GestureDetector(
+          onTap: _handleImageTap,
+          child: SizedBox(
+            height: 300,
+            child: CachedNetworkImage(
+              imageUrl: widget.artDetails.imageUrl,
+              fit: BoxFit.contain,
+              errorWidget: (_, __, ___) {
+                return const Icon(
+                  Icons.image_not_supported_outlined,
+                  size: 80,
+                );
+              },
+            ),
           ),
         ),
 
