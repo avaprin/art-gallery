@@ -5,9 +5,11 @@ import '../../../../data/models/preview/art_preview.dart';
 
 class ArtPreviewWidget extends StatelessWidget {
   final ArtPreview artPreview;
+  final void Function(ArtPreview) onArtPreviewTap;
 
   const ArtPreviewWidget({
     required this.artPreview,
+    required this.onArtPreviewTap,
     super.key,
   });
 
@@ -40,6 +42,7 @@ class ArtPreviewWidget extends StatelessWidget {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),
+      onTap: () => onArtPreviewTap(artPreview),
     );
   }
 }

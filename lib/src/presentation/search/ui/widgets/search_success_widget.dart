@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../di/app_di.dart';
 import '../../../../data/models/preview/art_preview.dart';
 import '../../bloc/search_bloc.dart';
 import 'art_preview_widget.dart';
@@ -22,6 +23,10 @@ class SearchSuccessWidget extends StatefulWidget {
 
 class _SearchSuccessWidgetState extends State<SearchSuccessWidget> {
   final ScrollController _scrollController = ScrollController();
+
+  void _handleArtPreviewTap(ArtPreview artPreview) {
+    appRouter.pushPath('/details/${artPreview.id}');
+  }
 
   void _handleSearchScroll() {
     context.read<SearchBloc>().add(
@@ -61,6 +66,7 @@ class _SearchSuccessWidgetState extends State<SearchSuccessWidget> {
             itemBuilder: (_, int index) {
               return ArtPreviewWidget(
                 artPreview: widget.artPreviews[index],
+                onArtPreviewTap: _handleArtPreviewTap,
               );
             },
             itemCount: widget.artPreviews.length,
