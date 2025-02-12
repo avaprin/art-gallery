@@ -12,4 +12,10 @@ abstract interface class ArtRepository {
   Future<ArtDetails> fetchArtDetails(
     FetchArtDetailsInput input,
   );
+
+  void likeArt(int id);
+
+  bool isLikedArt(int id);
+
+  Set<int> get likedArts;
 }

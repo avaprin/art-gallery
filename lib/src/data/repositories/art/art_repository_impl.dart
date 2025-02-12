@@ -10,6 +10,8 @@ import 'art_repository.dart';
 class ArtRepositoryImpl implements ArtRepository {
   final Dio _dio;
 
+  final Set<int> _likedArtIds = <int>{};
+
   ArtRepositoryImpl(this._dio);
 
   @override
@@ -74,4 +76,22 @@ class ArtRepositoryImpl implements ArtRepository {
       (response.data as Map<String, Object?>)['data'] as Map<String, Object?>,
     );
   }
+
+  @override
+  void likeArt(int id) {
+    if (_likedArtIds.contains(id)) {
+      _likedArtIds.remove(id);
+      return;
+    }
+
+    _likedArtIds.add(id);
+  }
+
+  @override
+  bool isLikedArt(int id) {
+    return _likedArtIds.contains(id);
+  }
+
+  @override
+  Set<int> get likedArts => _likedArtIds;
 }

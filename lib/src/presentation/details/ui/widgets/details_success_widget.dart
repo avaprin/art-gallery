@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../di/app_di.dart';
 import '../../../../core_ui/html_text.dart';
+import '../../../../core_ui/like_button.dart';
 import '../../../../data/models/details/art_details.dart';
 import '../../../../navigation/router.dart';
 
@@ -24,6 +25,12 @@ class _DetailsSuccessWidgetState extends State<DetailsSuccessWidget> {
     appRouter.push(
       ImageRoute(imageUrl: widget.artDetails.imageUrl),
     );
+  }
+
+  void _handleLikeTap() {
+    setState(() {
+      artRepository.likeArt(widget.artDetails.id);
+    });
   }
 
   void _handleLinkTap(String url) {
@@ -66,9 +73,25 @@ class _DetailsSuccessWidgetState extends State<DetailsSuccessWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               //
-              Text(
-                widget.artDetails.title,
-                style: textTheme.headlineMedium,
+              Row(
+                children: <Widget>[
+                  //
+                  Text(
+                    widget.artDetails.title,
+                    style: textTheme.headlineMedium,
+                  ),
+
+                  const Spacer(),
+
+                  LikeButton(
+                    onTap: _handleLikeTap,
+                    isFavourite: artRepository.isLikedArt(
+                      widget.artDetails.id,
+                    ),
+                  ),
+
+                  const SizedBox(width: 10),
+                ],
               ),
 
               if (widget.artDetails.date != null ||
