@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "920108819736",
+    "project_id": "art-gallery-b4884",
+    "storage_bucket": "art-gallery-b4884.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920108819736:android:7cbed06eec2fee3436aa6d",
+        "android_client_info": {
+          "package_name": "com.shared.artgallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920108819736-in8d1fohieumb8utofdbg7j2ukp5fq5u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shared.artgallery",
+            "certificate_hash": "422045dfe4b55dd5c10c5f34b97248f22ef35729"
+          }
+        },
+        {
+          "client_id": "920108819736-vu7a4745h37ion3udgg3poli6kkuukcm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcdSTH-gf728EAXGdDwNWsdgGDOKniKJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920108819736-vu7a4745h37ion3udgg3poli6kkuukcm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "920108819736-d034391723ilhmorau07018pur10bffb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shared.artgallery"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
