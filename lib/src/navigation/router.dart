@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../presentation/auth/ui/auth_screen.dart';
 import '../presentation/details/ui/details_screen.dart';
 import '../presentation/favourite/favourite_screen.dart';
 import '../presentation/home/home_screen.dart';
@@ -13,9 +14,13 @@ part 'router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => <AutoRoute>[
-        AutoRoute(
+        AdaptiveRoute<void>(
           initial: true,
           path: '/',
+          page: AuthRoute.page,
+        ),
+        AutoRoute(
+          path: '/home',
           page: HomeRoute.page,
           children: <AutoRoute>[
             AdaptiveRoute<void>(
