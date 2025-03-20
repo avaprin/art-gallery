@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart' as fir;
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../models/user/user.dart';
 import 'auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -28,5 +29,29 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<bool> isSignedIn() async {
     return _firebaseAuth.currentUser != null;
+  }
+
+  @override
+  Future<User> fetchUser() async {
+    final fir.User? firUser = _firebaseAuth.currentUser;
+
+    if (firUser == null) {
+      throw Exception('Failed to fetch user, already signed out');
+    }
+
+    return User(
+      id: firUser.uid,
+      name: firUser.displayName,
+      email: firUser.email,
+      imageUrl: firUser.photoURL,
+      creationDateTime: firUser.metadata.creationTime,
+      lastSignInDateTime: firUser.metadata.lastSignInTime,
+    );
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
+    await _firebaseAuth.signOut();
   }
 }

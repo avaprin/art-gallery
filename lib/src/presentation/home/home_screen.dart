@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
       routes: const <PageRouteInfo<Object?>>[
         SearchRoute(),
         FavouriteRoute(),
+        ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, TabsRouter tabsRouter) {
         return BottomNavigationBar(
@@ -24,6 +25,10 @@ class HomeScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: 'Favourite',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_rounded),
+              label: 'Profile',
             ),
           ],
         );
